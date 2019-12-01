@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, ActivatedRouteSnapshot, RouterStateSnapshot} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -9,22 +9,29 @@ import {Subscription} from "rxjs";
 })
 export class CoursesCategoryComponent implements OnInit, OnDestroy {
   private paramSubscription: Subscription;
+  private queryparamSubscription: Subscription;
   category: string;
+  subCategory: string;
 
   constructor(route:ActivatedRoute) {
 
     this.paramSubscription = route.params.subscribe(params => {
-       this.category = params['id']
+       this.category = params['id'];
       console.log('instantiate course category', this.category)
     });
+
+    this.queryparamSubscription= route.queryParamMap.subscribe(queryparams => {
+      this.subCategory = queryparams.get('subcategory')
+    })
   }
 
   ngOnInit() {
   }
 
   ngOnDestroy(): void {
-    console.log('destroy course category', this.category)
+    console.log('destroy course category', this.category);
     this.paramSubscription.unsubscribe();
+    this.queryparamSubscription.unsubscribe();
   }
 
 }

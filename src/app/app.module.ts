@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -12,6 +12,7 @@ import { CoursesComponent } from './courses/courses.component';
 import { CourseCardsComponent } from './course-cards/course-cards.component';
 import { SideMenuComponent } from './categories-menu/categories-menu.component';
 import { CoursesCategoryComponent } from './course-category/course-category.component';
+import { LoginComponent } from './auth/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +22,15 @@ import { CoursesCategoryComponent } from './course-category/course-category.comp
     CoursesComponent,
     CourseCardsComponent,
     SideMenuComponent,
-    CoursesCategoryComponent
+    CoursesCategoryComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    RouterModule.forRoot(routerConfig, {enableTracing: false})
+    RouterModule.forRoot(routerConfig, {enableTracing: false}),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

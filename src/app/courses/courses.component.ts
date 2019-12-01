@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, NavigationEnd, NavigationStart, Router} from "@angular/router";
+import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
 import {Subscription} from "rxjs";
 
@@ -16,7 +16,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe( (event: NavigationEnd) => {
-        this.urlSegments = event.url.replace('(','').replace(')','').split('/')
+        this.urlSegments = event.url.replace('(','').replace(')','').split('/');
         this.urlSegments = this.urlSegments.filter(segment => segment.length !== 0 && !segment.includes('sidemenu'));
         console.log("event : ", this.urlSegments)
       })
@@ -24,7 +24,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
   }
-00
+
   ngOnDestroy() {
     console.log("Destroy CoursesComponent");
     this.routerSubscription.unsubscribe();
