@@ -7,6 +7,7 @@ import {SideMenuComponent} from "./app/categories-menu/categories-menu.component
 import {CoursesCategoryComponent} from "./app/course-category/course-category.component";
 import {AuthGuard} from "./app/auth/auth.guard";
 import {LoginComponent} from "./app/auth/login/login.component";
+import {ConfirmGuard} from "./app/confirm/confirm.guard";
 
 
 export const routerConfig: Routes = [
@@ -26,6 +27,7 @@ export const routerConfig: Routes = [
     path: 'courses',
     component: CoursesComponent,
     canActivate: [AuthGuard],
+    canDeactivate: [ConfirmGuard],
     children: [
       {
         path: ':id',

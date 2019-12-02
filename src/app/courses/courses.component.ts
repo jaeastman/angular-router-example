@@ -2,6 +2,7 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NavigationEnd, Router} from "@angular/router";
 import {filter} from "rxjs/operators";
 import {Subscription} from "rxjs";
+import {ConfirmService} from "../confirm/confirm.service";
 
 @Component({
   selector: 'app-courses',
@@ -12,7 +13,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   private routerSubscription: Subscription;
   urlSegments: string[];
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private confirmService: ConfirmService) {
   this.routerSubscription = this.router.events
       .pipe(filter(event => event instanceof NavigationEnd))
       .subscribe( (event: NavigationEnd) => {
@@ -23,6 +24,7 @@ export class CoursesComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+    this.confirmService.confirmationRequired(true);
   }
 
   ngOnDestroy() {

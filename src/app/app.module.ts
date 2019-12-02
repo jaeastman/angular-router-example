@@ -13,6 +13,7 @@ import { CourseCardsComponent } from './course-cards/course-cards.component';
 import { SideMenuComponent } from './categories-menu/categories-menu.component';
 import { CoursesCategoryComponent } from './course-category/course-category.component';
 import { LoginComponent } from './auth/login/login.component';
+import { ConfirmDialogComponent } from './confirm/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { LoginComponent } from './auth/login/login.component';
     CourseCardsComponent,
     SideMenuComponent,
     CoursesCategoryComponent,
-    LoginComponent
+    LoginComponent,
+    ConfirmDialogComponent
   ],
   imports: [
     BrowserModule,
